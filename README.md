@@ -14,7 +14,7 @@ Implementação de animação do comportamento do merge sort
 
 ## Instalação 
 **Linguagem**: python3<br>
-
+**Requisitos**: python3-tk
 
 
 
