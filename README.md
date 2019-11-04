@@ -18,7 +18,7 @@ Implementação de animação do comportamento do merge sort. Com o usuário pod
 
 ## Referencia
 
-[python turtle academy](https://pythonturtle.academy/quick-sort-animation-with-python-and-turtle-with-source-code/)
+[python turtle academy](https://pythonturtle.academy/merge-sort-animation-with-python-and-turtle-with-source-code/)
 
 
 
