@@ -2,13 +2,16 @@ import turtle
 import random
 import time
 
-screen = turtle.Screen()
-screen.setup(1000, 1000)
-screen.setworldcoordinates(-1000, -1000, 1000, 1000)
-screen.tracer(0, 0)
-screen.title('Merge Sort Animation')
-turtle.speed(0)
-turtle.hideturtle()
+
+def set_turtle():
+    global screen
+    screen = turtle.Screen()
+    screen.setup(1000, 1000)
+    screen.setworldcoordinates(-1000, -1000, 1000, 1000)
+    screen.tracer(0, 0)
+    screen.title('Merge Sort Animation')
+    turtle.speed(0)
+    turtle.hideturtle()
 
 
 def draw_bar(x, y, w, h):
@@ -57,17 +60,21 @@ def merge(v, w, a, b, x, y):
             w[k], i = v[i], i+1
         else:
             w[k], j = v[j], j+1
-        draw_bars(v, w, n, i, j)
+        if choice == 1:
+            draw_bars(v, w, n, i, j)
         k += 1
     while i <= b:
         w[k], i, k = v[i], i+1, k+1
-        draw_bars(v, w, n, i, j)
+        if choice == 1:
+            draw_bars(v, w, n, i, j)
     while j <= y:
         w[k], j, k = v[j], j+1, k+1
-        draw_bars(v, w, n, i, j)
+        if choice == 1:
+            draw_bars(v, w, n, i, j)
     for i in range(a, y+1):
         v[i] = w[i]
-        draw_bars(v, w, n, i)
+        if choice == 1:
+            draw_bars(v, w, n, i)
 
 
 def merge_sort(v, w, x, y):
@@ -79,13 +86,22 @@ def merge_sort(v, w, x, y):
     merge(v, w, x, m, m+1, y)
 
 
-n = 50
-v = [0] * n
-w = [0] * n
-for i in range(n):
-    v[i] = random.randint(1, 800)
+if __name__ == "__main__":
+    choice = int(input("digite 1 para modo gráfico ou 2 para modo cli \n"))
 
-t1 = time.time()
-merge_sort(v, w, 0, n-1)
-t2 = time.time()
-print('elapsed time=', t2-t1)
+    if choice == 1:
+        set_turtle()
+
+    n = 50
+    v = [0] * n
+    w = [0] * n
+    for i in range(n):
+        v[i] = random.randint(1, 800)
+    if choice == 2:
+        print("vetor desordenado: ", v)
+    t1 = time.time()
+    merge_sort(v, w, 0, n-1)
+    t2 = time.time()
+    if(choice == 2):
+        print("vetor ordenado: ", v)
+    print('tempo da função de merge=', t2-t1)
